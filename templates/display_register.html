@@ -1,0 +1,33 @@
+
+{% extends 'display_user.html' %}
+
+{% block body_block %}
+
+    <table border="3px">
+        <tr>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Profile Pic</th>
+            <th>Background Pic</th>
+            <th>Aadhar number</th>
+
+        </tr>
+
+
+    {% for j in PD %}
+        <tr>
+            <td>{{ j.address  }}</td>
+            <td>{{ j.ph_number  }}</td>
+
+            <td align="center"><img src="{{j.profile.url}}" alt=""  width="100px" height="100px" ></td>
+            <td align="center"><img src="{{ j.bg_pic.url }}" alt="" width="100px" height="100px"></td>
+            <td>{{ j.aadhar_no }}</td>
+
+        </tr>
+    {% endfor %}
+
+
+    </table>
+
+           
+{% endblock %}
