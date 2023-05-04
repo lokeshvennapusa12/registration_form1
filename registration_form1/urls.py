@@ -22,7 +22,7 @@ from app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Register_form/',Register_form,name='Register_form'),
-    path('display_details/',display_details,name='display_details'),
+    #path('display_details/',display_details,name='display_details'),
     
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

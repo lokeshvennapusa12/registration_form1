@@ -6,7 +6,9 @@ from app.models import *
 from app.forms import *
 from django.http import HttpResponse
 
-def Register_form(request):
+from django.core.mail import send_mail
+
+def Register_form(request):   #azimwookvyjnvkag
     UFO=UserForm()
     PFO=ProfileForm()
     d={ 'UFO':UFO, 'PFO':PFO }
@@ -26,6 +28,14 @@ def Register_form(request):
             NPUD.user_name=NSUD
             NPUD.save()
 
+             # to send the mail after the registration is successfully . it will send the mail to the 
+            send_mail('tq for registering ',
+                      'your registration is successfully submitted for any quires contact through mail',
+                      'lokeshvennapusa22@gmail.com',
+                      [NSUD.email],
+                      fail_silently=True
+                      )
+
             UD=User.objects.all()
             PD=Register.objects.all()
             d={'UD':UD , 'PD':PD}
@@ -42,9 +52,9 @@ def Register_form(request):
     return render(request,'Register_form.html',d)
 
 
-def display_details(request):
-    UD=User.objects.all()
-    PD=Register.objects.all()
-    d={'UD':UD , 'PD':PD}
+# def display_details(request):
+#     UD=User.objects.all()
+#     PD=Register.objects.all()
+#     d={'UD':UD , 'PD':PD}
     
-    return render (request,'display_register.html',d)
+#     return render (request,'display_register.html',d)
